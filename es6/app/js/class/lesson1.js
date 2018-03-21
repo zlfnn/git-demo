@@ -15,14 +15,15 @@ function test(){
 }
 
 function last(){
-  const PI=3.1415926;
+  var  PI=3.1415926;
   const k={
     a:1
   }
   k.b=3;
+  PI = 32342;
   console.log(PI,k);
 }
 
 
 test();
-// last();
+last();
