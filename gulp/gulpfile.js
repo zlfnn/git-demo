@@ -31,6 +31,15 @@ gulp.task('style',function(){
 	}));  //浏览器自动刷新
 })
 
+var sass = require('gulp-sass');
+gulp.task('sass', function(){
+	gulp.src(['src/styles/*.scss'])
+	.pipe(sass())
+	.pipe(gulp.dest('dist/styles'))
+	.pipe(browserSync.reload({
+		stream:true
+	}));  //浏览器自动刷新
+})
 
 // 2 js 合并 压缩混淆（字符串减小化）
 var concat=require('gulp-concat');  //合并插件
@@ -74,6 +83,14 @@ gulp.task('html',function(){
 	}));
 })
 
+// var clean = require('gulp-clean');
+// var pump    = require('pump');
+// gulp.task('clean', function(){
+// 	pump([
+//         gulp.src('./dist'),
+//         clean()
+//     ], cb)
+// })
 // 启动服务监视工具包
 
 
@@ -87,8 +104,10 @@ gulp.task('serve',function(){
 	})
 })
 
+
 // 监视所有文件 自动执行任务
 gulp.watch('src/styles/*.less',['style']);
+gulp.watch('src/styles/*.scss',['sass']);
 gulp.watch('src/scripts/*.js',['script']);
 gulp.watch('src/images/*.*',['image']);
 gulp.watch('src/*.html',['html']);

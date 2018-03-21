@@ -7,5 +7,5 @@
 
 'use strict';
 (function(){
-		console.log(222);
+		console.log(2222);
 })();
