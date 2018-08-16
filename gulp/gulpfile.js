@@ -95,6 +95,12 @@ gulp.task('html',function(){
 
 
 gulp.task('serve',function(){
+	// 监视所有文件 自动执行任务
+	gulp.watch('src/styles/*.less',['style']);
+	gulp.watch('src/styles/*.scss',['sass']);
+	gulp.watch('src/scripts/*.js',['script']);
+	gulp.watch('src/images/*.*',['image']);
+	gulp.watch('src/*.html',['html']);
 	browserSync({
 		server:{
 			baseDir:'dist/'
@@ -105,9 +111,3 @@ gulp.task('serve',function(){
 })
 
 
-// 监视所有文件 自动执行任务
-gulp.watch('src/styles/*.less',['style']);
-gulp.watch('src/styles/*.scss',['sass']);
-gulp.watch('src/scripts/*.js',['script']);
-gulp.watch('src/images/*.*',['image']);
-gulp.watch('src/*.html',['html']);
